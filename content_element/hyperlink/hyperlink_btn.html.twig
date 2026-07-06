@@ -1,0 +1,13 @@
+{% extends "@Contao/content_element/hyperlink.html.twig" %}
+{% block wrapper %}
+  {% block text_link %}
+    {% set link_attributes = attrs()
+      .set('class')
+      .addClass('btn')
+      .setIfExists('id', element_html_id)
+      .addClass(element_css_classes)
+      .mergeWith(link_attributes|default)
+    %}
+    <a{{ attrs(link_attributes|default) }}><span>{{ link_text|html_entity_decode|insert_tag_raw }}</span></a>
+  {% endblock %}
+{% endblock %}

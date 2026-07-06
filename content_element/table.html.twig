@@ -1,0 +1,11 @@
+{% extends '@Contao_ContaoCoreBundle/content_element/table.html.twig' %}
+
+{% block table %}
+    {% set table_attributes = attrs()
+      .set('class')
+      .setIfExists('id', element_html_id)
+      .addClass(element_css_classes|preg_replace('/table-responsive/U', ''))
+      .mergeWith(table_attributes|default)
+    %}
+   {{ parent() }}
+{% endblock %}

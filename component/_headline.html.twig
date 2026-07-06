@@ -1,0 +1,24 @@
+{% use "@Contao/component/_headline.html.twig" %}
+
+{#
+  ** Add changes to the base template here. **
+
+  Hint: Try adjusting blocks and attributes instead of
+  overwriting the whole template. This way your version
+  can remain compatible with future changes to the base
+  template as well as adjustments made by extensions.
+
+  Currently available blocks:
+    "headline_component", "headline_attributes",
+    "headline_inner"
+
+  Example:
+    {% block headline_component %}
+       {{ parent() }}
+       My additional content for 'headline_component'…
+    {% endblock %}
+#}
+
+{%- block headline_inner -%}
+    {{ headline.text|insert_tag_raw|html_entity_decode|preg_replace('/--(.*)--/U', '<span class="ft-theme">$1</span>') }}
+{%- endblock -%}
