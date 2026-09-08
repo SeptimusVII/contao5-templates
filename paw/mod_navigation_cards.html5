@@ -1,0 +1,7 @@
+<!-- indexer::stop -->
+<nav class="<?= $this->class ?> d-grid grid-minmax cols-min-1 cols-max-5 gap-2-em auto-rows block justifycontent--center block-card__container isGrid"<?= $this->cssID ?>style="--griditem-minwidth:18ch;  <?= $this->style ?>" itemscope itemtype="http://schema.org/SiteNavigationElement">
+
+  <?= $this->items ?>
+
+</nav>
+<!-- indexer::continue -->

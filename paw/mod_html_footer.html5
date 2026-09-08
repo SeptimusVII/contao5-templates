@@ -1,0 +1,39 @@
+<div class="footer__richcontent container">
+	<div class="footer__col logo_coords">
+		<div class="footer__cell logo">
+        	<img src="{{env::url}}/files/logos/logo_phonix.svg" alt="logo PAW SARL" style="width: 230px; height: auto; object-fit: scale-down; ">
+			<div class="footer__cell punchline">
+			</div>
+		</div>
+		<div class="footer__cell coords ft-grey">
+			<!-- ANAEL Analyse En Ligne SAS<br>
+			15 rue Nobel - ZI<br>
+			45700 VILLEMANDEUR -->
+		</div>
+	</div>
+	<div class="footer__col contact_socials">
+		<div class="footer__cell contact">
+			<div class="h3">Nous contacter</div>
+			<a href="tel:XXXXXXXX" class="btn squared"><i class="fal fa-phone"></i></a>
+			<a href="mailto:XXXXXXXXXXXX" class="btn squared"><i class="fal fa-envelopes"></i></a>
+		</div>
+		<!-- <div class="footer__cell socials">
+			<div class="h3">Nos réseaux sociaux</div>
+			{{insert_module::6}}
+		</div> -->
+	</div>
+	<div class="footer__col nav">
+		{{insert_module::5}}
+		<a href="" onclick="tarteaucitron.userInterface.openPanel();return false;">{{iflng::it}}Dati personali{{iflng::en}}Personal data{{iflng::fr}}Données personnelles{{iflng}}</a>
+	</div>
+</div>
+<div class="footer__copyright">
+	<div class="container">
+		<div class="footer__col copyright">
+			Copyright © {{date::Y}} PAW SARL
+		</div>
+		<div class="footer__col credits">
+			<span>Conception et réalisation par <a href="https://www.webexmachina.fr?src=Caraïb'Bay Hôtel" title="Web ex Machina" target="_blank" style="color:inherit;">Web ex Machina</a></span>
+		</div>
+	</div>
+</div>

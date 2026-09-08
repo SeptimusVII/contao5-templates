@@ -1,0 +1,12 @@
+<div class="headerFW nav--right panel--right bg-none ft-l hover--color" data-stick="scroll" data-watchnav="true">
+  <div class="headerFW__wrapper">
+    <div class="headerFW__logo__wrapper">
+      <a href="{{env::url}}" id="logo" class="headerFW__logo p-0" title="PAW SARL">
+        <img src="{{env::url}}/files/logos/logo_phonix.svg" alt="logo PAW SARL" style="width: 230px; height: auto; object-fit: scale-down; ">
+      </a>
+    </div>
+    <div class="headerFW__nav__wrapper">
+      {{insert_module::1}}
+    </div>
+  </div>
+</div>

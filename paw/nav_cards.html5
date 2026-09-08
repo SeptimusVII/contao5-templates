@@ -1,0 +1,38 @@
+<?php $wrapper = true; ?>
+<?php foreach ($this->items as $item): ?>
+  <?php 
+    // $item['pageImageOverwriteMeta'] => boolean, allows reading variable listed below
+    // $item['pageImageAlt'] => string, alt text for image
+    // $item['pageImageTitle']  => string, title for image
+    $objFile = null;
+    $imgHtml = '';
+      $imagesAsArray = \Contao\StringUtil::deserialize($item['pageImage'],[]); 
+    if(!empty($imagesAsArray)){
+      $uuid = $imagesAsArray[0];
+      $objFile = \Contao\FilesModel::findOneByUuid($uuid);
+      $imgHtml = \Contao\Image::getHtml($objFile->path);
+    }
+  ?>
+  <div class="block-card <?= $item['class'] ?>" data-maxlines="4" data-preset="anael--navcard">
+    <?php if ($wrapper == true): ?>
+      <a href="<?php echo $item['href'] ?>" class="block-card__wrapper"  title="<?= $item['pageTitle'] ?: $item['title'] ?>" <?php if ('' !== $item['accesskey']): ?> accesskey="<?= $item['accesskey'] ?>"<?php endif; ?><?php if (isset($item['tabindex'])): ?> tabindex="<?= $item['tabindex'] ?>"<?php endif; ?><?= $item['target'] ?><?= $item['rel'] ?? '' ?>>
+    <?php else: ?>
+      <div class="block-card__wrapper" >
+    <?php endif ?>
+      <div class="block-card__figure"><?php echo $imgHtml?:'<img src="https://picsum.photos/id/237/200/300" alt="placeholder">' ?></div>
+      <div class="block-card__content">
+        <div class="block-card__title h3 ft-sc txt-center"><?= $item['link'] ?></div>
+        <?php if ($item['description']): ?>
+          <div class="block-card__text">
+            <p><?php echo $item['description'] ?></p>
+          </div>
+        <?php endif ?>
+        <?php if ($item['href'] && 1==0): ?>
+          <div class="block-card__actions">
+            <<?php echo $wrapper == true?'button':'a' ?> href="<?php echo $item['href'] ?>" class="block-card__btn squared"  title="<?= $item['pageTitle'] ?: $item['title'] ?>" <?php if ('' !== $item['accesskey']): ?> accesskey="<?= $item['accesskey'] ?>"<?php endif; ?><?php if ($item['tabindex']): ?> tabindex="<?= $item['tabindex'] ?>"<?php endif; ?><?= $item['target'] ?><?= $item['rel'] ?? '' ?>><i class="fa fa-arrow-right-long"></i></<?php echo $wrapper == true?'button':'a' ?>>
+          </div>
+        <?php endif ?>
+      </div>
+    </<?php echo $wrapper == true?'a':'div' ?>>
+  </div>
+<?php endforeach; ?>
