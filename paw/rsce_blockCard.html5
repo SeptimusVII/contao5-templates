@@ -1,0 +1,68 @@
+<?php
+	// Get the file
+	$arrCrop = \Contao\StringUtil::deserialize($this->size);
+	$objFile = \Contao\FilesModel::findByUuid($this->singleSRC) ?: \Contao\FilesModel::findOneByPath($this->singleSRC);
+	// $strFile = !$objFile ? '' : \Contao\Image::get($objFile->path, (!$arrCrop[0] && !$arrCrop[1]) ? 1920 : $arrCrop[0] , $arrCrop[1] ?: '', $arrCrop[2] ?: "proportional");
+
+
+	// Prepare the main block classes
+	$arrClasses = [];
+	if($this->image_displaymode)
+		$arrClasses[] = $this->image_displaymode;
+	if($this->image_ratio)
+		$arrClasses[] = $this->image_ratio;
+	if($this->image_align_horizontal)
+		$arrClasses[] = $this->image_align_horizontal;
+	if($this->image_align_vertical)
+		$arrClasses[] = $this->image_align_vertical;
+
+	// Prepare the block wrapper
+	$arrWrapperClasses = ['block-card__wrapper'];
+	if ($this->addRadius) 
+		$arrWrapperClasses[] = 'rad';
+	$strWrapperStart = 'div class="'.implode(' ', $arrWrapperClasses).'"';
+	$strWrapperEnd = 'div';
+	if($this->url && $this->link_mode == 'wrapper') {
+		$strWrapperStart = sprintf('a href="%s" title="%s" class="%s"', $this->url, $this->titleText ?: $this->alt, implode(' ', $arrWrapperClasses));
+		$strWrapperEnd = 'a';
+
+		if($this->target)
+			$strWrapperStart .= ' target="_blank"';
+	}
+?>
+<div class="block-card <?= implode(' ', $arrClasses) ?> <?= $this->class ?>"<?= $this->cssID ?> data-preset="<?= $this->preset ?: 'default' ?>">
+	<<?= $strWrapperStart ?>>
+		<?php if ($this->singleSRC && $this->content_order == 'img_first'): ?>
+			<div class="block-card__figure <?= $this->image_css ?>" <?= (($this->preset == 'inline' && $this->image_displaymode == 'fit--natural') || $this->image_displaymode == 'fit--natural') ? 'style="width:'.(($arrCrop[0] ?? false)?$arrCrop[0].'px':'auto').'"' :'' ?>>
+				<?php echo $this->figure($objFile->path, $arrCrop); ?>
+			</div>
+		<?php endif ?>
+		<?php if($this->text || $this->headline): ?>
+			<div class="block-card__content">
+				<?php if ($this->headline): ?><div class="block-card__title <?= $this->hl ?> <?= $this->title_css ?>"><?= $this->headline ?></div><?php endif; ?>
+				<?php if ($this->text): ?><div class="block-card__text <?= $this->text_css ?>"><?= $this->text ?></div><?php endif; ?>
+				<?php if ($this->url && $this->link_mode != 'wrapper'): ?>
+					<div class="block-card__actions">
+						<a href="<?= $this->url ?>" <?= $this->target?' target="_blank"':'' ?> 
+						class="
+						<?= $this->link_mode == 'btn'?'btn':'' ?>
+						<?php echo $this->preset == "anael--navcard"?' block-card__btn':'' ?> 
+						<?php echo $this->preset == "anael--navcard"  && $this->linkTitle=="" ?' squared':' icon-last' ?> 
+						<?= $this->link_css ?>" 
+						title="<?= trim(strip_tags($this->titleText)) ?: trim(strip_tags($this->linkTitle)) ?>">
+						<?= $this->linkTitle ?><?php echo $this->preset == "anael--navcard"?'<i class="fa fa-arrow-right-long"></i>':'' ?>
+						</a>
+					</div>
+				<?php endif ?>
+			</div>
+		<?php endif; ?>
+		<?php if ($this->singleSRC && $this->content_order == 'txt_first'): ?>
+			<div class="block-card__figure <?= $this->image_css ?>" <?= (($this->preset == 'inline' && $this->image_displaymode == 'fit--natural') || $this->image_displaymode == 'fit--natural') ? 'style="width:'.(($arrCrop[0] ?? false)?$arrCrop[0].'px':'auto').'"' :'' ?>>
+				<?php echo $this->figure($objFile->path, $arrCrop,[
+
+				]); ?>
+			</div>
+		<?php endif ?>
+
+    </<?= $strWrapperEnd ?>>
+</div>

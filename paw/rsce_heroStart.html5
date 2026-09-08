@@ -1,0 +1,63 @@
+<?php
+  // Get the file
+  $arrCrop = \Contao\StringUtil::deserialize($this->size);
+  $objFile = \Contao\FilesModel::findByUuid($this->singleSRC);
+  // $strFile = \Contao\Image::get($objFile->path, (!$arrCrop[0] && !$arrCrop[1]) ? 1920 : $arrCrop[0] , $arrCrop[1] ?: '', $arrCrop[2] ?: "proportional");
+  $isVideo = strstr(mime_content_type($objFile->path), "video/")?true:false;
+
+  // Prepare the main block classes
+  $arrClasses = [];
+  switch($this->hero_width){
+    case 'container' : 
+    case 'viewport' : $arrClasses[] = 'w-full'; break;
+    case 'content'  : $arrClasses[] = 'width--content'; break;
+  }
+  $height = '';
+  switch($this->hero_height){
+    case 'custom'   : $height       = $this->block_height; break;
+    case 'viewport' : $height       = 'viewport'; break;
+    case 'content'  : $arrClasses[] = 'height--content'; break;
+  }
+
+  if($this->image_align_horizontal)
+    $arrClasses[] = $this->image_align_horizontal;
+  if($this->image_align_vertical)
+    $arrClasses[] = $this->image_align_vertical;
+  if(isset($this->image_opacity))
+    $arrClasses[] = 'figure__opacity--'.intval($this->image_opacity);
+  
+  if($this->overlay_background)
+    $arrClasses[] = 'content__bg--'.$this->overlay_background;
+  if(isset($this->overlay_opacity))
+    $arrClasses[] = 'content__bg__opacity--'.$this->overlay_opacity;
+  
+  if($this->content_horizontal || $this->content_vertical)
+    $arrClasses[] = 'content--h--'.$this->content_horizontal;
+  if($this->content_vertical)
+    $arrClasses[] = 'content--v--'.$this->content_vertical;
+
+  if($this->content_fontcolor)
+    $arrClasses[] = 'ft-'.$this->content_fontcolor;
+  if($this->title_modifier)
+    $arrClasses[] = $this->title_modifier;
+
+
+?>
+<?php 
+if (\Contao\System::getContainer()->get('contao.routing.scope_matcher')->isFrontendRequest(\Contao\System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create(''))
+) : ?>
+<div class="heroFW <?= implode(' ', $arrClasses) ?> <?= $this->class ?>"<?= $this->cssID ?> data-height="" <?= ($height!="viewport"&&$height!="content") ? 'style="height:'.$height.';"' : '' ?> <?= ($height=="viewport") ? 'style="height:calc(100vh - var(--viewport-padding-top,0px));"' : '' ?>>
+  <div class="heroFW__wrapper">
+    <div class="heroFW__figure">
+      <?php if (!$isVideo): ?>
+        <img src="<?= $objFile->path ?>" alt="<?= $this->alt ?>">
+      <?php else: ?>
+        <video width="100%" height="100%" autoplay muted loop style="object-fit: cover;">
+          <source src="<?= $objFile->path ?>" type="video/mp4">
+            video
+        </video>
+      <?php endif ?>
+    </div>
+    <div class="heroFW__content">
+      <div class="heroFW__content__wrapper <?= $this->hero_width=='container'?'container':'' ?>">
+<?php endif; ?>

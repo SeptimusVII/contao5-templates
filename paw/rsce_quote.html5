@@ -1,0 +1,36 @@
+<?php
+  // Get the file
+  $arrCrop = \Contao\StringUtil::deserialize($this->size);
+  $objFile = \Contao\FilesModel::findByUuid($this->singleSRC);
+  $strFile = !$objFile ? '' : \Image::get($objFile->path, (!$arrCrop[0] && !$arrCrop[1]) ? 1920 : $arrCrop[0] , $arrCrop[1] ?: '', $arrCrop[2] ?: "proportional");
+
+  // Prepare the main block classes
+  $arrClasses = [];
+  if($this->image_displaymode)
+    $arrClasses[] = $this->image_displaymode;
+  if($this->image_ratio)
+    $arrClasses[] = $this->image_ratio;
+  if($this->image_align_horizontal)
+    $arrClasses[] = $this->image_align_horizontal;
+  if($this->image_align_vertical)
+    $arrClasses[] = $this->image_align_vertical;
+
+?>
+<div class="<?= $this->class ?> <?= implode(' ', $arrClasses)  ?> w-fit">
+  <?php if ($strFile && $this->image_pos == 'before'): ?>
+    <div class="quote__picture <?= $this->image_ratio ? 'img-container':'' ?><?= $this->rounded?' rounded-circle':'' ?>" <?= $this->image_ratio && $arrCrop[0] ? 'style="width:'.$arrCrop[0].'px"':'' ?>>
+      <img src="<?= $strFile ?>" alt="<?= $this->alt ?>" width="<?= $arrCrop[0] ?>" height="<?= $arrCrop[1] ?>" >
+    </div>
+  <?php endif ?>
+  <div class="quote__content <?= $strFile ? 'p-all':'' ?> r">
+    <!-- <div> -->
+      <div class="quote__content__text "><?= $this->text ?></div>
+      <div class="quote__content__author"><strong><?= $this->author ?></strong></div>
+    <!-- </div> -->
+  </div>
+  <?php if ($strFile && $this->image_pos == 'after'): ?>
+    <div class="quote__picture <?= $this->image_ratio ? 'img-container':'' ?><?= $this->rounded?' rounded-circle':'' ?>" <?= $this->image_ratio && $arrCrop[0] ? 'style="width:'.$arrCrop[0].'px"':'' ?>>
+      <img src="<?= $strFile ?>" alt="<?= $this->alt ?>" width="<?= $arrCrop[0] ?>" height="<?= $arrCrop[1] ?>" >
+    </div>
+  <?php endif ?>
+</div>
