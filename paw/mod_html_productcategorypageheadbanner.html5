@@ -1,0 +1,29 @@
+<?php global $objPage;  ?>
+<?php if ($objPage->displayPageheadbanner || $objPage->pageImage): ?>
+	<?php 
+		if ($objPage->pageImage){
+			$objFile = null;
+			$imgHtml = '';
+		    $imagesAsArray = \Contao\StringUtil::deserialize($objPage->pageImage,[]); 
+			if(!empty($imagesAsArray)){
+				$uuid = $imagesAsArray[0];
+				$objFile = \Contao\FilesModel::findOneByUuid($uuid);
+				$imgHtml = ''.\Contao\Image::getHtml($objFile->path).'';
+			}
+		}
+	?>
+
+	<div class="heroFW w-full img--center img--center figure__opacity--10 content__bg--primary content__bg__opacity--8 ft-white title--4 ce_rsce_hero m-0 height--content <?php echo $objPage->displayPageheadbanner_style=="split"? 'splitcontent':'content--h--center ft-white'?> ce_rsce_hero" data-height="" style="min-height: 30vh;">
+		<div class="heroFW__wrapper">
+			<div class="heroFW__figure">
+				<!-- <?php echo $objPage->pageImage ? $imgHtml:'' ?> -->
+			</div>
+			<div class="heroFW__content ">
+				<div class="heroFW__content__wrapper container">
+					<h1 class="heroFW__title txt-center"><b>{{page::title}}</b></h1>                
+					<div class="heroFW__text"><?php echo $objPage->pageSubtitle ?></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endif ?>

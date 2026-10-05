@@ -1,0 +1,41 @@
+<div class="content--icon">
+	<?php if ($this->url): ?>
+	<a href="<?= $this->url ?>" title="<?= $this->linkTitle ?: $this->headline ?>">
+	<?php endif ?>	
+
+	<?php if ($this->html && 'left' === $this->icon_pos): ?>
+	<div class="icon flex-wrap-justifycontent--center-alignitems--center bd-primary ft-primary rounded-circle w-fit center" style="aspect-ratio: 1/1;">
+		<?= $this->html ?>
+	</div>
+	<?php endif ?>
+
+	<?php if($this->text || $this->headline): ?>
+	<div class="content text-center m-top">
+		<?php if ($this->headline): ?>
+		<div class="content__title <?= $this->hl ?> <?= $this->title_css ?>"><?= $this->headline ?></div>
+		<?php endif; ?>
+		
+		<?php if ($this->text): ?>
+		<div class="content__text <?= $this->text_css ?>"><?= $this->text ?></div>
+		<?php endif; ?>
+		
+		<?php if ($this->url): ?>
+		<div class="content__actions">
+			<!-- <a href="<?= $this->url ?>" <?= $this->target?' target="_blank"':'' ?> class="<?= $this->link_mode == 'btn'?'btn':'' ?><?= $this->link_css ?>" title="<?= trim(strip_tags($this->titleText)) ?: trim(strip_tags($this->linkTitle)) ?>"> -->
+			<?= $this->linkTitle ?><?php echo $this->preset == "anael--navcard"?'<i class="fa fa-arrow-right-long"></i>':'' ?>
+			<!-- </a> -->
+		</div>
+		<?php endif ?>
+	</div>
+	<?php endif; ?>
+
+	<?php if ($this->html && 'right' === $this->icon_pos): ?>
+	<div class="icon flex-wrap-justifycontent--center-alignitems--center bd-primary ft-primary rounded-circle" style="aspect-ratio: 1/1;">
+		<?= $this->html ?>
+	</div>
+	<?php endif ?>
+
+	<?php if ($this->url): ?>
+	</a>
+	<?php endif ?>	
+</div>

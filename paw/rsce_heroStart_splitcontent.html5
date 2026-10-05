@@ -44,32 +44,22 @@
     // if($this->title_modifier)
       // $arrClasses[] = $this->title_modifier;
 
-
-  ?>
-  <div class="heroFW <?= implode(' ', $arrClasses) ?> <?= $this->class ?>"<?= $this->cssID ?> data-height="<?= $height ?>" <?= ($height!="viewport"&&$height!="content") ? 'style="height:'.$height.';"' : '' ?> <?= ($height=="viewport") ? 'style="height:80vh;"' : '' ?>>
-    <div class="heroFW__wrapper">
-      <div class="heroFW__figure">
-        <?php if (!$isVideo): ?>
-          <img src="<?= $objFile->path ?>" alt="<?= $this->alt ?>">
-        <?php else: ?>
-          <video width="100%" height="100%" autoplay muted loop style="object-fit: cover;">
-            <source src="<?= $objFile->path ?>" type="video/mp4">
-              video
-          </video>
-        <?php endif ?>
-      </div>
-      <div class="heroFW__content ">
-        <div class="heroFW__content__wrapper">
-          <?php if ($this->headline): ?>
-            <?= $this->hl?'<'.$this->hl.' class="heroFW__title '.$this->title_css.'">':'<div class="heroFW__title '.$this->title_css.'">' ?><?= $this->headline ?><?= $this->hl?'</'.$this->hl.'>':'</div>' ?>
-          <?php endif ?>
-          <div class="heroFW__text">
-            <?= $this->text ?>
-            <?php if($this->link_href): ?>
-              <a class="btn <?= $this->link_classes ?> <?php echo !$this->overlay_background || $this->overlay_background=='primary'?'btn-bg-blue_4':'' ?>" href="<?= $this->link_href ?>" title="<?= $this->link_title ?>"<?= $this->link_target ? ' target="_blank"' : '' ?>><?= $this->link_text ?></a>
-            <?php endif; ?>
-          </div>
-        </div>
-      </div>
+?>
+<?php 
+if (\Contao\System::getContainer()->get('contao.routing.scope_matcher')->isFrontendRequest(\Contao\System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create(''))
+) : ?>
+<div class="heroFW <?= implode(' ', $arrClasses) ?> <?= $this->class ?>"<?= $this->cssID ?> data-height="" <?= ($height!="viewport"&&$height!="content") ? 'style="height:'.$height.';"' : '' ?> <?= ($height=="viewport") ? 'style="height:calc(100vh - var(--viewport-padding-top,0px));"' : '' ?>>
+  <div class="heroFW__wrapper">
+    <div class="heroFW__figure">
+      <?php if (!$isVideo): ?>
+        <img src="<?= $objFile->path ?>" alt="<?= $this->alt ?>">
+      <?php else: ?>
+        <video width="100%" height="100%" autoplay muted loop style="object-fit: cover;">
+          <source src="<?= $objFile->path ?>" type="video/mp4">
+            video
+        </video>
+      <?php endif ?>
     </div>
-  </div>
+    <div class="heroFW__content">
+      <div class="heroFW__content__wrapper">
+<?php endif; ?>
