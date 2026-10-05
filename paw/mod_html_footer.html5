@@ -5,7 +5,7 @@
 			<div class="footer__cell punchline">
 			</div>
 		</div>
-		<div class="footer__cell coords ft-grey">
+		<div class="footer__cell coords ft-grey hidden">
 			<!-- ANAEL Analyse En Ligne SAS<br>
 			15 rue Nobel - ZI<br>
 			45700 VILLEMANDEUR -->
