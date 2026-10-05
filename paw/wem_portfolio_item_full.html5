@@ -1,0 +1,106 @@
+<div class="portfolio_full block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article">
+  <div class="heroFW splitcontent reader height--content w-full img--center img--center content__bg--aquamarine ce_rsce_hero m-bottom-0" data-height="" style="height:;">
+    <div class="heroFW__wrapper shdw">
+      <?php if ($this->singleSRC): ?>
+      <div class="heroFW__figure">
+        <?php if ($this->singleSRC['extension'] != 'png' && $this->singleSRC['extension'] != 'PNG' && 1==0): ?>
+          <div  style="background: url('<?= $this->singleSRC['path'] ?>'); position: absolute; inset: 0; z-index: -1; filter: blur(70px); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+        <?php endif ?>
+        <img class="p-all" style="" src="<?= $this->singleSRC['path'] ?>" alt="<?= $this->alt ?: $this->title ?>" itemprop="image">
+        <?php if ($this->featured == "Oui"): ?>
+          <span class="tag featured bg-theme">NOUVEAUTÉ</span>
+        <?php endif ?>
+      </div>
+      <?php endif; ?>
+      <div class="heroFW__content ">
+        <div class="heroFW__content__wrapper">
+          <h1 class="heroFW__title"><?= $this->title ?></h1>                
+          <div class="heroFW__text" style="">
+            <?php if ($this->teaser && 1==0): ?>
+              <?php echo $this->teaser ?>
+            <?php endif; ?>               
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="portfolio__wrapperContent">
+    <?php if ($this->hasText): ?>
+      <div class="content--text">
+        <?php echo $this->text ?>
+        <?php if ($this->supplierName): ?>
+          <div class="m-top">
+            Fabriqué par
+            <?php if ($this->supplierLink): ?>
+              <a class="ft-b" href="<?php echo $this->supplierLink ?>" target="_blank" title="Accéder au site <?php echo $this->supplierName ? 'de '.$this->supplierName:'du fournisseur' ?>">
+            <?php endif ?>
+            <?php echo $this->supplierName ?>
+            <?php if ($this->supplierLink): ?>
+              </a>
+            <?php endif ?>
+          </div>
+        <?php endif ?>
+      </div>
+    <?php endif ?>
+      <div class="content--media">
+        <?php if (is_array($this->productGallery) && !empty($this->productGallery) && count($this->productGallery)>0): ?>
+          <div class="sliderFW arrow--sm nav--hidden media--gallery p-0 m-0" data-nbitems="1" data-height="" data-duration="" data-delay="5600" data-auto="false" data-arrows="true" data-transition="translate" data-swipe="true" data-loop="true" data-keypress="false">
+            <div class="sliderFW__container rad">
+              <div class="sliderFW__rail">
+                <?php foreach ($this->productGallery as $key => $picture): ?>
+                  <div class="sliderFW__item"  style="height: auto; aspect-ratio: 1;">
+                    <div class="sliderFW__item__bg fit--scaledown bg-greylighter">
+                       <img src="<?= $picture["path"] ?>" alt="" itemprop="image">
+                    </div>
+                     <a class="sliderFW__item__content p-0" style="aspect-ratio: 1;" href="<?= $picture["path"] ?>" data-gallery="gallery_<?php echo $this->id ?>" data-modal="modalPicture_<?= $picture["id"]?:$key ?>" class="img-container r_1-1">
+                     </a>
+                  </div>
+                <?php endforeach ?>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
+        <?php if (!empty($this->variantsFiles) && count($this->variantsFiles)>0): ?>
+          <div class="media--docs">
+            <h2>Variantes</h2>
+            <div class="table-list">
+              <?php $labels = explode(',',$this->variantsLabels); ?>
+              <table class="table-list__container">
+              <?php foreach ($this->variantsFiles as $key => $file): ?>
+                <tr style="cursor: pointer" onclick="this.querySelector('.dll').click();" title="Télécharger le document: <?php echo $file['name'] ?>">
+                  <td data-name="label"><?php echo trim($labels[$key]) != "" ?$labels[$key]:$file['name'] ?></td>
+                  <td data-name="actions">
+                    <a class="table-list__action dll" href="<?php echo $file['path'] ?>" download title="Télécharger le document: <?php echo $file['name'] ?>"><i class="fa fa-file-<?php echo strtolower($file['extension']) ?>"></i></a>
+                  </td>
+                </tr>
+              <?php endforeach ?>
+              </table>
+            </div>
+          </div>
+        <?php endif; ?>
+      </div>
+  </div>
+</div>
+
+<!-- <div class="w-full m-top m-bottom-x2">
+{{insert_module::xx}}
+</div> -->
+
+<div class="similar-projects" id="similar-projects">
+  <h2 class="ce_headline_highlighted">{{iflng::fr}}Nos autres produits dans la catégorie <?php echo $this->category ?>{{iflng}}{{ifnlng::fr}}Similar projects{{ifnlng}}</h2>
+  <?php
+    $objModel = \Contao\ModuleModel::findByPk(22);
+    if($objModel) {
+      $objModel->wem_portfolio_constraints = serialize([
+        'tl_wem_portfolio.pid = ' . $this->pid,
+        'tl_wem_portfolio.category = "' . $this->category_raw . '"',
+        'tl_wem_portfolio.id != ' . $this->id
+      ]);
+      
+      $objModule = new \Contao\ModuleProxy($objModel);
+      echo $objModule->generate();
+    }
+  ?>
+</div>

@@ -1,0 +1,21 @@
+<div class="portfolio_item block-card  block<?= $this->class ?> cols-span-all_" itemscope itemtype="http://schema.org/Article" data-maxlines="4" data-preset="paw--card">
+    <<?= $this->jumpTo ? 'a href="' . $this->jumpTo . '" title="' . $GLOBALS['TL_LANG']['MSC']['more'] . '"' : 'div' ?>
+    class="block-card__wrapper">
+    <div class="block-card__figure fit--scaledown p-all-1em">
+      <?php if ($this->addImage): ?>
+          <div style="background: url('<?= $this->singleSRC['path'] ?>'); position: absolute; inset: 0; z-index: -1; filter: blur(10px) opacity(0.35); background-size: 150%; background-position: center; background-repeat: no-repeat;"></div>
+          <?php $this->insert('image', $this->arrData); // need picture size optimisation ?>
+      <?php endif; ?>
+    </div>
+    <div class="block-card__content flex-justifycontent--center-alignitems--center gap-1-em ">
+      <div class="block-card__title h2 txt-center"> <?= $this->title ?> </div>
+      <?php if ($this->teaser && 1==0): ?>
+        <div class="block-card__text" itemprop="description">
+          <?php if($this->teaser): ?>
+          <?= $this->teaser ?>
+          <?php endif ?>
+        </div>
+      <?php endif ?>
+    </div>
+</<?= $this->jumpTo ? 'a' : 'div' ?>>
+</div>

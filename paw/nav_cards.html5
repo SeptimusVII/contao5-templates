@@ -13,13 +13,13 @@
       $imgHtml = \Contao\Image::getHtml($objFile->path);
     }
   ?>
-  <div class="block-card <?= $item['class'] ?>" data-maxlines="4" data-preset="anael--navcard">
+  <div class="block-card <?= $item['class'] ?>" data-maxlines="4" data-preset="paw--navcard">
     <?php if ($wrapper == true): ?>
       <a href="<?php echo $item['href'] ?>" class="block-card__wrapper"  title="<?= $item['pageTitle'] ?: $item['title'] ?>" <?php if ('' !== $item['accesskey']): ?> accesskey="<?= $item['accesskey'] ?>"<?php endif; ?><?php if (isset($item['tabindex'])): ?> tabindex="<?= $item['tabindex'] ?>"<?php endif; ?><?= $item['target'] ?><?= $item['rel'] ?? '' ?>>
     <?php else: ?>
       <div class="block-card__wrapper" >
     <?php endif ?>
-      <div class="block-card__figure"><?php echo $imgHtml?:'<img src="https://picsum.photos/id/237/200/300" alt="placeholder">' ?></div>
+      <div class="block-card__figure"><?php echo $imgHtml?:'<img src="https://picsum.photos/id/237/300/300" alt="placeholder">' ?></div>
       <div class="block-card__content">
         <div class="block-card__title h3 ft-sc txt-center"><?= $item['link'] ?></div>
         <?php if ($item['description']): ?>
