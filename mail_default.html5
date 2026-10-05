@@ -1,0 +1,549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="--btn-p-x: 1.5em; --btn-p-y: 0.5em; --btn-font-size: 1em; --btn-font-family: inherit; --btn-font-weight: 300; --btn-line-height: 1.5em; --btn-radius: 100px; --btn-background: #0d2bff; --btn-border-color: #0d2bff; --btn-border-size: 1px; --btn-font-color: #fff;">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title><?php echo $this->title; ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+@media (max-width:1400px) {
+  .center-xl {
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .center-xl:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:1400px) {
+  .center-y-xl {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .center-y-xl:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:1200px) {
+  .center-lg {
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .center-lg:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:1200px) {
+  .center-y-lg {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .center-y-lg:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:992px) {
+  .center-md {
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .center-md:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:992px) {
+  .center-y-md {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .center-y-md:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:768px) {
+  .center-sm {
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .center-sm:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:768px) {
+  .center-y-sm {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .center-y-sm:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:576px) {
+  .center-xs {
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .center-xs:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:576px) {
+  .center-y-xs {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .center-y-xs:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:400px) {
+  .center-xxs {
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .center-xxs:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:400px) {
+  .center-y-xxs {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .center-y-xxs:is(button:where([type=submit],
+[type=button]),
+input:where,
+.btn,
+.btn-sm,
+.btn-lg,
+[class*=btn-bd-],
+[class*=btn-bg-]) {
+    display: block;
+  }
+}
+@media (max-width:1400px) {
+  .hidden-xl {
+    display: none!important;
+  }
+
+  .visible-xl {
+    display: block!important;
+  }
+}
+@media (max-width:1200px) {
+  .hidden-lg {
+    display: none!important;
+  }
+
+  .visible-lg {
+    display: block!important;
+  }
+}
+@media (max-width:992px) {
+  .hidden-md {
+    display: none!important;
+  }
+
+  .visible-md {
+    display: block!important;
+  }
+}
+@media (max-width:768px) {
+  .hidden-sm {
+    display: none!important;
+  }
+
+  .visible-sm {
+    display: block!important;
+  }
+}
+@media (max-width:576px) {
+  .hidden-xs {
+    display: none!important;
+  }
+
+  .visible-xs {
+    display: block!important;
+  }
+}
+@media (max-width:400px) {
+  .hidden-xxs {
+    display: none!important;
+  }
+
+  .visible-xxs {
+    display: block!important;
+  }
+}
+@media (max-width:1400px) {
+  [class*=icon-].btn-lg .hidden-xl+i[class*=fa],
+[class*=icon-].btn-lg .hidden-xl+svg,
+[class*=icon-].btn-sm .hidden-xl+i[class*=fa],
+[class*=icon-].btn-sm .hidden-xl+svg,
+[class*=icon-].btn .hidden-xl+i[class*=fa],
+[class*=icon-].btn .hidden-xl+svg,
+[class*=icon-][class*=btn-bd-] .hidden-xl+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-xl+svg,
+[class*=icon-][class*=btn-bg-] .hidden-xl+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-xl+svg,
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xl+i[class*=fa],
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xl+svg,
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xl+i[class*=fa],
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xl+svg {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@media (max-width:1200px) {
+  [class*=icon-].btn-lg .hidden-lg+i[class*=fa],
+[class*=icon-].btn-lg .hidden-lg+svg,
+[class*=icon-].btn-sm .hidden-lg+i[class*=fa],
+[class*=icon-].btn-sm .hidden-lg+svg,
+[class*=icon-].btn .hidden-lg+i[class*=fa],
+[class*=icon-].btn .hidden-lg+svg,
+[class*=icon-][class*=btn-bd-] .hidden-lg+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-lg+svg,
+[class*=icon-][class*=btn-bg-] .hidden-lg+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-lg+svg,
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-lg+i[class*=fa],
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-lg+svg,
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-lg+i[class*=fa],
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-lg+svg {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@media (max-width:992px) {
+  [class*=icon-].btn-lg .hidden-md+i[class*=fa],
+[class*=icon-].btn-lg .hidden-md+svg,
+[class*=icon-].btn-sm .hidden-md+i[class*=fa],
+[class*=icon-].btn-sm .hidden-md+svg,
+[class*=icon-].btn .hidden-md+i[class*=fa],
+[class*=icon-].btn .hidden-md+svg,
+[class*=icon-][class*=btn-bd-] .hidden-md+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-md+svg,
+[class*=icon-][class*=btn-bg-] .hidden-md+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-md+svg,
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-md+i[class*=fa],
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-md+svg,
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-md+i[class*=fa],
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-md+svg {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@media (max-width:768px) {
+  [class*=icon-].btn-lg .hidden-sm+i[class*=fa],
+[class*=icon-].btn-lg .hidden-sm+svg,
+[class*=icon-].btn-sm .hidden-sm+i[class*=fa],
+[class*=icon-].btn-sm .hidden-sm+svg,
+[class*=icon-].btn .hidden-sm+i[class*=fa],
+[class*=icon-].btn .hidden-sm+svg,
+[class*=icon-][class*=btn-bd-] .hidden-sm+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-sm+svg,
+[class*=icon-][class*=btn-bg-] .hidden-sm+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-sm+svg,
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-sm+i[class*=fa],
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-sm+svg,
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-sm+i[class*=fa],
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-sm+svg {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@media (max-width:576px) {
+  [class*=icon-].btn-lg .hidden-xs+i[class*=fa],
+[class*=icon-].btn-lg .hidden-xs+svg,
+[class*=icon-].btn-sm .hidden-xs+i[class*=fa],
+[class*=icon-].btn-sm .hidden-xs+svg,
+[class*=icon-].btn .hidden-xs+i[class*=fa],
+[class*=icon-].btn .hidden-xs+svg,
+[class*=icon-][class*=btn-bd-] .hidden-xs+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-xs+svg,
+[class*=icon-][class*=btn-bg-] .hidden-xs+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-xs+svg,
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xs+i[class*=fa],
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xs+svg,
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xs+i[class*=fa],
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xs+svg {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@media (max-width:400px) {
+  [class*=icon-].btn-lg .hidden-xxs+i[class*=fa],
+[class*=icon-].btn-lg .hidden-xxs+svg,
+[class*=icon-].btn-sm .hidden-xxs+i[class*=fa],
+[class*=icon-].btn-sm .hidden-xxs+svg,
+[class*=icon-].btn .hidden-xxs+i[class*=fa],
+[class*=icon-].btn .hidden-xxs+svg,
+[class*=icon-][class*=btn-bd-] .hidden-xxs+i[class*=fa],
+[class*=icon-][class*=btn-bd-] .hidden-xxs+svg,
+[class*=icon-][class*=btn-bg-] .hidden-xxs+i[class*=fa],
+[class*=icon-][class*=btn-bg-] .hidden-xxs+svg,
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xxs+i[class*=fa],
+button[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xxs+svg,
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xxs+i[class*=fa],
+input[class*=icon-]:where([type=submit],
+[type=button]) .hidden-xxs+svg {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@media (max-width:576px) {
+  .spacer-x {
+    width: 1em!important;
+  }
+}
+@media (max-width:576px) {
+  .spacer-y {
+    height: 1em!important;
+  }
+}
+@media (max-width:992px) {
+  #container {
+    width: 80%!important;
+  }
+}
+@media (max-width:768px) {
+  #container {
+    width: 90%!important;
+  }
+}
+@media (max-width:576px) {
+  #container {
+    width: 100%!important;
+  }
+}
+@media (max-width:576px) {
+  #header td {
+    display: block;
+  }
+}
+@media (max-width:992px) {
+  #header #logo img {
+    width: 120px!important;
+  }
+}
+@media (max-width:576px) {
+  #header #logo img {
+    max-width: 80%;
+    width: 120px!important;
+  }
+
+  #header #logo {
+    width: auto;
+  }
+}
+@media (max-width:576px) {
+  #header #headline {
+    margin: auto;
+    max-width: 90%!important;
+    text-align: center!important;
+  }
+}
+@media (max-width:400px) {
+  #footer td {
+    display: block;
+    margin: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+</style>
+</head>
+<body style="margin: 0; padding: 0; background: #e5e5e5; color: #111414; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif; font-size: 18px;">
+  <table border="0" cellpadding="0" cellspacing="0" id="body" style="border-collapse: collapse; width: 100%; background: #e5e5e5; color: #111414; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif; font-size: 18px;" width="100%">
+    <tr style="max-width: 100%;">
+      <td style="max-width: 100%;">
+        <table border="0" align="center" cellpadding="0" cellspacing="0" id="container" style="border-collapse: collapse; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.25); box-shadow: 0 1px 4px rgba(0,0,0,.25); position: relative; background: #f5f6ff; max-width: 100%; width: 800px;" width="800">
+          <tr style="max-width: 100%;">
+            <td style="max-width: 100%;">
+              <table border="0" align="center" cellpadding="0" cellspacing="0" id="header" style="border-collapse: collapse; width: 100%; background-color: #fff; color: #111414;" width="100%" bgcolor="#fff">
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr style="max-width: 100%;">
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td class="txt-center" id="logo" width="1" style="max-width: 100%; text-align: center;" align="center">
+                    <!-- {{env::path}}path -->
+                    <img src="{{env::path}}files/logos/logopaw.png" alt="PAW Sarl logo" style="width: 250px;" width="250">
+                  </td>
+                  <td class="spacer-x spacer-y" style="max-width: 100%; width: 2em; height: 2em;"></td>
+                  <td id="headline" style="max-width: 100%; text-align: right;" align="right">
+                  </td>
+                  <td class="spacer-x spacer-y" style="max-width: 100%; width: 2em; height: 2em;"></td>
+                </tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="max-width: 100%;">
+            <td style="max-width: 100%;">
+              <table border="0" align="center" cellpadding="0" cellspacing="0" id="main" style="border-collapse: collapse; width: 100%;" width="100%">
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr style="max-width: 100%;">
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td style="max-width: 100%;"> 
+                    <!-- content here -->
+                    <?= $this->body ?>
+                  <!-- </td> -->
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                  <td class="spacer-x" style="max-width: 100%; width: 2em;"></td>
+                </tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 2em;"></tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="max-width: 100%;">
+            <td style="max-width: 100%;">
+              <table border="0" align="center" cellpadding="0" cellspacing="0" id="subfooter" style="border-collapse: collapse; width: 100%; color: rgba(17,20,20,.8); font-size: 14px;" width="100%">
+                <tr class="spacer-y" style="max-width: 100%; height: 1em;"></tr>
+                <tr style="max-width: 100%;">
+                  <td class="spacer-x" style="max-width: 100%; width: 1em;"></td>
+                  <td class="txt-center" style="max-width: 100%; text-align: center;" align="center">
+                    © {{date::Y}} {{page::rootTitle}} | {{iflng::en}}This email was sent from an automatic mailbox. Please don't answer it.{{iflng::fr}}Cet email a été envoyé depuis une boîte automatique. Merci de ne pas y répondre.{{iflng}}
+                  </td>
+                  <td class="spacer-x" style="max-width: 100%; width: 1em;"></td>
+                </tr>
+                <tr class="spacer-y" style="max-width: 100%; height: 1em;"></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
