@@ -1,3 +1,4 @@
+<?php $user = \Contao\System::getContainer()->get('security.token_storage')->getToken()?->getUser(); ?>
 <div class="portfolio_full block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article">
   <div class="heroFW splitcontent reader height--content w-full img--center img--center content__bg--aquamarine ce_rsce_hero m-bottom-0" data-height="" style="height:;">
     <div class="heroFW__wrapper shdw">
@@ -72,7 +73,11 @@
                 <tr style="cursor: pointer" onclick="this.querySelector('.dll').click();" title="Télécharger le document: <?php echo $file['name'] ?>">
                   <td data-name="label"><?php echo trim($labels[$key]) != "" ?$labels[$key]:$file['name'] ?></td>
                   <td data-name="actions">
+                    <?php if (null === $user): ?>
+                    <a class="table-list__action dll" href="#" title="Télécharger le document: <?php echo $file['name'] ?>" data-modal="loginModal"><i class="fa fa-file-<?php echo strtolower($file['extension']) ?>"></i></a>
+                    <?php else: ?>
                     <a class="table-list__action dll" href="<?php echo $file['path'] ?>" download title="Télécharger le document: <?php echo $file['name'] ?>"><i class="fa fa-file-<?php echo strtolower($file['extension']) ?>"></i></a>
+                    <?php endif; ?>
                   </td>
                 </tr>
               <?php endforeach ?>
@@ -104,3 +109,19 @@
     }
   ?>
 </div>
+
+<div class="modalFW" data-name="loginModal">
+  {{iflng::fr}}{{insert_content::315}}{{iflng::en}}{{insert_content::316}}{{iflng}}
+  {{iflng::fr}}{{insert_module::25}}{{iflng::en}}{{insert_module::26}}{{iflng}}
+</div>
+<script type="text/javascript">
+    localStorage.setItem("pawLastProduct", window.location.href);
+
+    if (document.querySelector('.modalFW[data-name="loginModal"] .error')) {
+      window.addEventListener("load", function(e) {
+        setTimeout(function(){
+          $('.modalFW[data-name="loginModal"]').modalFW('get').open()
+        },200)
+      });
+    }
+</script>
