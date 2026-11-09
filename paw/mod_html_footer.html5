@@ -14,8 +14,9 @@
 	<div class="footer__col contact_socials">
 		<div class="footer__cell contact">
 			<div class="h3">Nous contacter</div>
-			<a href="tel:XXXXXXXX" class="btn squared"><i class="fal fa-phone"></i></a>
-			<a href="mailto:XXXXXXXXXXXX" class="btn squared"><i class="fal fa-envelopes"></i></a>
+			<a href="tel:+33437408195" class="btn squared"><i class="fal fa-phone"></i></a>
+			<a href="mailto:commercial@phoenix-valvegroup.com" class="btn squared"><i class="fal fa-envelopes"></i></a>
+			<a href="http://www.linkedin.com/company/paw-sarl" target="_blank" class="btn squared"><i class="fab fa-linkedin"></i></a>
 		</div>
 		<!-- <div class="footer__cell socials">
 			<div class="h3">Nos réseaux sociaux</div>
@@ -33,7 +34,7 @@
 			Copyright © {{date::Y}} PAW SARL
 		</div>
 		<div class="footer__col credits">
-			<span>Conception et réalisation par <a href="https://www.webexmachina.fr?src=Caraïb'Bay Hôtel" title="Web ex Machina" target="_blank" style="color:inherit;">Web ex Machina</a></span>
+			<span>Conception et réalisation par <a href="https://www.webexmachina.fr?src=paw-sarl" title="Web ex Machina" target="_blank" style="color:inherit;">Web ex Machina</a></span>
 		</div>
 	</div>
 </div>
